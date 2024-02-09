@@ -1,9 +1,33 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+</head>
 <body>
-  <h1>Nitish Vankina</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
-</body>
 
+    <header>
+        <h1>Welcome to My Blog</h1>
+    </header>
+
+    <section>
+        <h2>Latest Blogs</h2>
+        <!-- Display a list of latest blogs here -->
+        <ul>
+            <li><a href="blog1.html">Blog Title 1</a></li>
+            <li><a href="blog2.html">Blog Title 2</a></li>
+            <!-- Add more blog entries as needed -->
+        </ul>
+    </section>
+
+    <button onclick="redirectToNewBlogPage()">Write a New Blog</button>
+
+    <script>
+        function redirectToNewBlogPage() {
+            window.location.href = "new-blog.html";
+        }
+    </script>
+
+</body>
 </html>
