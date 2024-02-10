@@ -45,18 +45,29 @@
 
     <textarea id="story-editor" placeholder="Start writing your new story here..."></textarea>
 
-    <button onclick="saveStory()">Save Story</button>
+    <button onclick="publishStory()">Publish Story</button>
 
     <script>
-        function saveStory() {
+        function publishStory() {
             // Get the content from the text area
             var storyContent = document.getElementById('story-editor').value;
 
-            // You can perform actions to save the story, e.g., send it to a server
-            // For demonstration purposes, log the content to the console
-            console.log(storyContent);
+            // Check if there's existing data in local storage
+            var existingStories = JSON.parse(localStorage.getItem('publishedStories')) || [];
 
-            // Optionally, redirect the user to the main stories page after saving
+            // Create a new story object
+            var newStory = {
+                content: storyContent,
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Add the new story to the existing stories
+            existingStories.push(newStory);
+
+            // Save the updated stories to local storage
+            localStorage.setItem('publishedStories', JSON.stringify(existingStories));
+
+            // Optionally, redirect the user to the main stories page after publishing
             window.location.href = "index.html";
         }
     </script>
