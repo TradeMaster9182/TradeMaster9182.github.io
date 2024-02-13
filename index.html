@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Stories</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -64,6 +65,13 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        /* Add styles for responsiveness */
+        @media only screen and (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -83,9 +91,16 @@
 
     <button onclick="redirectToNewBlogPage()">Write a New Story</button>
 
+    <!-- Button for the new page -->
+    <button onclick="redirectToClickerPage()">Open Clicker Page</button>
+
     <script>
         function redirectToNewBlogPage() {
             window.location.href = "new-blog.html";
+        }
+
+        function redirectToClickerPage() {
+            window.location.href = "clicker.html";
         }
     </script>
 
