@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game with Upgrades</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        #score {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        #upgrades {
+            margin: 20px 0;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Clicker Game with Upgrades</h1>
+    <p>Click the button to increase your score!</p>
+
+    <p id="score">Score: <span id="scoreValue">0</span></p>
+
+    <div id="upgrades">
+        <button onclick="buyUpgrade(1)">Upgrade 1 - Cost: 10</button>
+        <button onclick="buyUpgrade(2)">Upgrade 2 - Cost: 20</button>
+        <button onclick="buyUpgrade(3)">Upgrade 3 - Cost: 30</button>
+    </div>
+
+    <button id="clickButton" onclick="increaseScore()">Click me!</button>
+
+    <script>
+        // Variables
+        let score = 0;
+        let clickValue = 1;
+        let upgradeCosts = [10, 20, 30];
+        let upgrades = [1, 1, 1];
+
+        // Function to increase the score
+        function increaseScore() {
+            score += clickValue;
+            document.getElementById("scoreValue").textContent = score;
+        }
+
+        // Function to buy an upgrade
+        function buyUpgrade(upgradeIndex) {
+            const cost = upgradeCosts[upgradeIndex - 1];
+
+            if (score >= cost) {
+                score -= cost;
+                clickValue += upgrades[upgradeIndex - 1];
+                upgrades[upgradeIndex - 1] += 1;
+                updateDisplay();
+            } else {
+                alert("Not enough points to buy this upgrade!");
+            }
+        }
+
+        // Function to update the display
+        function updateDisplay() {
+            document.getElementById("scoreValue").textContent = score;
+
+            for (let i = 0; i < upgrades.length; i++) {
+                document.getElementsByTagName("button")[i].textContent = `Upgrade ${i + 1} - Cost: ${upgradeCosts[i]}`;
+            }
+        }
+    </script>
+
+</body>
+</html>
